@@ -1,0 +1,58 @@
+* {
+    margin: 0;
+    padding: 0;
+}
+
+body {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background-color: #D4E79E;
+    height: 100vh;
+}
+
+#buttons {
+    width: 40vw;
+    height: 60vh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-wrap: wrap;
+    background-color: #B8C480;
+    border-radius: 2rem;
+    border: 3px solid black;
+}
+
+.options {
+    font-size: 3rem;
+    padding: 1rem;
+    margin: 3rem;
+    border: none;
+    border-radius: 1rem;
+    border: 2px solid black;
+}
+
+.options:hover {
+    cursor: pointer;
+    transform: scale(1.04);
+}
+
+#red {
+    background-color: red;
+    color: white;
+}
+
+#green {
+    background-color: green;
+    color: white;
+}
+
+#blue {
+    background-color: blue;
+    color: white;
+}
+
+#random {
+    background-color: gray;
+    color: white;
+}
