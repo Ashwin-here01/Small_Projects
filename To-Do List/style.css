@@ -1,0 +1,96 @@
+* {
+    margin: 0;
+    padding: 0;
+    text-align: center;
+}
+
+body {
+    background-color: #E8EDDF;
+}
+
+h1 {
+    height: 5rem;
+    font-size: 3rem;
+    line-height: 5rem;
+    background-color: #CFDBD5;
+}
+
+h3 {
+    font-size: 2rem;
+    padding: 1rem;
+}
+
+#inputText {
+    height: 3rem;
+    width: 50vw;
+    font-size: 1.6rem;
+}
+
+#addButton {
+    height: 3rem;
+    font-size: 1.6rem;
+    padding: 0.55rem;
+    background-color: #242423;
+    color: #F5CB5C;
+    border-radius: 0.5rem;
+    margin-left: 1.3rem;
+}
+
+#addButton:hover {
+    cursor: pointer;
+    transform: scale(1.05);
+}
+
+#ListItems {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin: auto;
+    width: 50vw;
+    margin-top: 2rem;
+}
+
+#tasks {
+    font-size: 1.5rem;
+    width: 100%;
+    background-color: #333533;
+    color: #E8EDDF;
+    padding: 0.3rem;
+    border-radius: 0.5rem;
+}
+
+li {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 0.5rem;
+    list-style-type: none;
+    list-style-position: inside;
+}
+
+#buttons {
+    display: inline-block;
+    margin-left: 1rem;
+}
+
+.modifyButtons {
+    font-size: 1.3rem;
+    padding: 0.3rem;
+    border-radius: 0.5rem;
+}
+
+.modifyButtons:hover {
+    cursor: pointer;
+    transform: scale(1.05);
+}
+
+#doneButton {
+    margin-right: 0.5rem;
+    background-color: #61E294;
+}
+
+#deleteButton {
+    background-color: #FF5964;
+}
+
+/*Coolers: https://coolors.co/cfdbd5-e8eddf-f5cb5c-242423-333533 */
