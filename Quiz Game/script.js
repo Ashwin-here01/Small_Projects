@@ -5,6 +5,7 @@ let startButton = document.querySelector("#start_button");
 
 let count = 0;
 let scoreCounter = 0;
+let answered = false;
 let questions = [
     "What is H₂O commonly known as?",
     "How many continents are there on Earth?",
@@ -34,8 +35,14 @@ startButton.addEventListener("click", () => {
     startButton.remove();
 });
 
-startButton.addEventListener("click", () => {
+function nextQuestion() {
+    if(count === 6) return;
+    
+    answered = false;
     qHeading.innerText = questions[count];
+    optionDivs.forEach((optionDiv) => {
+        optionDiv.style.backgroundColor = "";
+    });
     innerBox.setAttribute("id", "inner_box");
     innerBox.append(questionNumber);
     innerBox.append(score);
@@ -48,20 +55,41 @@ startButton.addEventListener("click", () => {
     count++;
     outerBox.append(qHeading);
     outerBox.append(innerBox);
-    for(let i = 0; i < 4; i++) {
-        outerBox.append(optionDivs[i]);
-    }
-});
-
-for(let i = 0; i < 4; i++) {
-    optionDivs[i].addEventListener("click", () => {
-        if(optionDivs[i].innerText === answers[count - 1]){
-            scoreCounter++;
-            optionDivs[i].style.backgroundColor = "#BDF7B7"
-            count++;
-            
-        } else {
-            optionDivs[i].style.backgroundColor = "#F7B7B7"
-        }
+    optionDivs.forEach((optionDiv) => {
+        outerBox.append(optionDiv);
     });
 }
+
+startButton.addEventListener("click", nextQuestion);
+
+for(let optionDiv of optionDivs) {
+    optionDiv.addEventListener("click", () => {
+        if(answered) return;
+
+        if(optionDiv.innerText == answers[count - 1]) {
+            scoreCounter++;
+            score.innerText = `Score: ${scoreCounter}`;
+            optionDiv.style.backgroundColor = "#BDF7B7";
+            // count++;
+        } else {
+            optionDiv.style.backgroundColor = "#F7B7B7";
+
+            optionDivs.forEach((div) => {
+                if(div.innerText == answers[count - 1]) {
+                    div.style.backgroundColor = "#BDF7B7";
+                }
+            });
+        }
+
+        answered = true;
+
+        nextQuestion();
+        // setTimeout(nextQuestion, 1000);
+    });
+}
+
+
+
+// Add progress bar
+// Write stopping condition
+// In the end display the result
