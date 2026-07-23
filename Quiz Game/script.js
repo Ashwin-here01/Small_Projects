@@ -29,6 +29,11 @@ let questionNumber = document.createElement("p");
 let score = document.createElement("p");
 let optionDivs = [document.createElement("div"), document.createElement("div"), document.createElement("div"), document.createElement("div")];
 
+let quizResultHeading = document.createElement("h1");
+let scoreBoard = document.createElement("div");
+let scoreBoardParas = [document.createElement("p"), document.createElement("p")];
+let restartBtn = document.createElement("button");
+
 startButton.addEventListener("click", () => {
     heading.remove();
     para.remove();
@@ -36,7 +41,10 @@ startButton.addEventListener("click", () => {
 });
 
 function nextQuestion() {
-    if(count === 6) return;
+    if(count === 6){
+        setTimeout(dispResult, 1000);
+        return;
+    }
     
     answered = false;
     qHeading.innerText = questions[count];
@@ -70,7 +78,6 @@ for(let optionDiv of optionDivs) {
             scoreCounter++;
             score.innerText = `Score: ${scoreCounter}`;
             optionDiv.style.backgroundColor = "#BDF7B7";
-            // count++;
         } else {
             optionDiv.style.backgroundColor = "#F7B7B7";
 
@@ -83,13 +90,56 @@ for(let optionDiv of optionDivs) {
 
         answered = true;
 
-        nextQuestion();
-        // setTimeout(nextQuestion, 1000);
+        setTimeout(nextQuestion, 1000);
     });
 }
+
+function dispResult() {
+    qHeading.remove();
+    innerBox.remove();
+    for(let optDiv of optionDivs) {
+        optDiv.remove();
+    }
+
+    quizResultHeading.innerText = "Quiz Results";
+
+    scoreBoardParas[0].innerText = `You scored ${scoreCounter} out of ${questions.length}`;
+    if(scoreCounter === questions.length) scoreBoardParas[1].innerText = "Excellent performance! Keep learning";
+    else if(scoreCounter < (questions.length / 2)) scoreBoardParas[1].innerText = "Need improvement! Keep learning";
+    else scoreBoardParas[1].innerText = "Good effort! Keep learning";
+
+    scoreBoard.append(scoreBoardParas[0]);
+    scoreBoard.append(scoreBoardParas[1]);
+
+    restartBtn.innerText = "Restart Quiz";
+
+
+    quizResultHeading.style.fontSize = "2.6rem";
+
+    scoreBoardParas[0].style.fontSize = "1.4rem";
+    scoreBoardParas[1].style.fontSize = "1.7rem";
+    scoreBoardParas[1].style.fontWeight = "bold";
+
+    scoreBoard.setAttribute("id", "score_board");
+
+    restartBtn.setAttribute("id", "start_button");
+
+
+    outerBox.append(quizResultHeading);
+    outerBox.append(scoreBoard);
+    outerBox.append(restartBtn);
+
+    count = 0;
+    scoreCounter = 0;
+}
+
+restartBtn.addEventListener("click", () => {
+    quizResultHeading.remove();
+    scoreBoard.remove();
+    restartBtn.remove();
+    nextQuestion();
+});
 
 
 
 // Add progress bar
-// Write stopping condition
-// In the end display the result

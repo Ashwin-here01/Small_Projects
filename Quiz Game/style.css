@@ -20,7 +20,7 @@ body {
     border: 0.08rem solid black;
     border-radius: 0.8rem;
     padding: 3.5rem 2rem 3.5rem 2rem;
-    width: 37%;
+    width: 40%;
     display: flex;
     flex-direction: column;
     align-items: center;
@@ -33,14 +33,15 @@ body {
 }
 
 #para {
-    font-size: 1.5rem;
+    font-size: 1.3rem;
     padding-top: 1rem;
     padding-bottom: 1rem;
 }
 
 #start_button {
-    background-color: #BFDBF7;
-    padding: 0.5rem;
+    background-color: #28A0B8;
+    color: white;
+    padding: 1rem;
     border-radius: 0.5rem;
     border: 0.08rem solid black;
     cursor: pointer;
@@ -70,5 +71,18 @@ body {
 .option_box:hover {
     background-color: #A4CCF4; 
 }
+
+
+#score_board {
+    text-align: center;
+    line-height: 2.8rem;
+    background-color: #C5CDE7;
+    border-radius: 0.5rem;
+    width: 90%;
+    padding: 1.5rem 0.3rem 1.5rem 0.3rem;
+    margin-top: 1rem;
+    margin-bottom: 1rem;
+}
+
 
 /* Coolers: https://coolors.co/022b3a-1f7a8c-bfdbf7-e1e5f2-f5f5f5 */
