@@ -34,11 +34,17 @@ let scoreBoard = document.createElement("div");
 let scoreBoardParas = [document.createElement("p"), document.createElement("p")];
 let restartBtn = document.createElement("button");
 
+let progressBar = [document.createElement("div"), document.createElement("div")];
+
 startButton.addEventListener("click", () => {
     heading.remove();
     para.remove();
     startButton.remove();
 });
+
+progressBar[0].setAttribute("id", "progress_bar_outer");
+progressBar[1].setAttribute("id", "progress_bar_inner");
+progressBar[0].append(progressBar[1]);
 
 function nextQuestion() {
     if(count === 6){
@@ -60,12 +66,15 @@ function nextQuestion() {
         optionDivs[i].setAttribute("class", "option_box");
         optionDivs[i].innerText = options[count][i];
     }
-    count++;
     outerBox.append(qHeading);
     outerBox.append(innerBox);
     optionDivs.forEach((optionDiv) => {
         outerBox.append(optionDiv);
     });
+    
+    outerBox.append(progressBar[0]);
+    
+    count++;
 }
 
 startButton.addEventListener("click", nextQuestion);
@@ -73,23 +82,25 @@ startButton.addEventListener("click", nextQuestion);
 for(let optionDiv of optionDivs) {
     optionDiv.addEventListener("click", () => {
         if(answered) return;
-
+        
         if(optionDiv.innerText == answers[count - 1]) {
             scoreCounter++;
             score.innerText = `Score: ${scoreCounter}`;
             optionDiv.style.backgroundColor = "#BDF7B7";
         } else {
             optionDiv.style.backgroundColor = "#F7B7B7";
-
+            
             optionDivs.forEach((div) => {
                 if(div.innerText == answers[count - 1]) {
                     div.style.backgroundColor = "#BDF7B7";
                 }
             });
         }
-
+        
         answered = true;
 
+        progressBar[1].style.width = `${(count / questions.length) * 100}%`;
+        
         setTimeout(nextQuestion, 1000);
     });
 }
@@ -100,13 +111,15 @@ function dispResult() {
     for(let optDiv of optionDivs) {
         optDiv.remove();
     }
+    progressBar[1].style.width = "0%";
+    progressBar[0].remove();
 
     quizResultHeading.innerText = "Quiz Results";
 
     scoreBoardParas[0].innerText = `You scored ${scoreCounter} out of ${questions.length}`;
-    if(scoreCounter === questions.length) scoreBoardParas[1].innerText = "Excellent performance! Keep learning";
-    else if(scoreCounter < (questions.length / 2)) scoreBoardParas[1].innerText = "Need improvement! Keep learning";
-    else scoreBoardParas[1].innerText = "Good effort! Keep learning";
+    if(scoreCounter === questions.length) scoreBoardParas[1].innerText = "Excellent performance! Keep learning!";
+    else if(scoreCounter < (questions.length / 2)) scoreBoardParas[1].innerText = "Need improvement! Keep learning!";
+    else scoreBoardParas[1].innerText = "Good effort! Keep learning!";
 
     scoreBoard.append(scoreBoardParas[0]);
     scoreBoard.append(scoreBoardParas[1]);
@@ -139,7 +152,3 @@ restartBtn.addEventListener("click", () => {
     restartBtn.remove();
     nextQuestion();
 });
-
-
-
-// Add progress bar
