@@ -1,0 +1,155 @@
+@import url(https://fonts.googleapis.com/css?family=Poppins:100,100italic,200,200italic,300,300italic,regular,italic,500,500italic,600,600italic,700,700italic,800,800italic,900,900italic);
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    font-family: "Poppins", sans-serif;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+    background-color: #FADCDC;
+    background: linear-gradient(300deg, #FADCDC, #F09292);
+}
+
+.container {
+    background-color: white;
+    padding: 1.5rem;
+    border-radius: 1.7rem;
+    box-shadow: 2px 4px 10px rgba(0, 0, 0, 0.2);
+    text-align: center;
+}
+
+.container > h2 {
+    font-size: 1.8rem;
+    font-weight: 600;
+    width: 60vw;
+    margin-bottom: 1.4rem;
+}
+
+.balance-container {
+    background: linear-gradient(127deg, #ECDECB, #C49C67);
+    border-radius: 1rem;
+    padding: 1rem;
+}
+
+.balance-container > h2 {
+    font-size: 1.2rem;
+    font-weight: 600;
+}
+
+.remaining-balance {
+    font-size: 3rem;
+    font-weight: 600;
+}
+
+.in-ex-container {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.in-ex-divs {
+    background-color: white;
+    width: 49%;
+    border-radius: 0.5rem;
+    padding: 1rem;
+    transition: transform 0.2s;
+}
+
+.in-ex-divs:hover {
+    transform: translateY(-1.5px);
+}
+
+.in-ex-divs > p {
+    font-size: 1.05rem;
+    font-weight: 600;
+    margin-bottom: 0.5rem;
+}
+
+.in-ex-divs > div {
+    font-size: 1.7rem;
+    font-weight: 670;
+}
+
+.income-div {
+    color: #249D8F;
+}
+
+.expense-div {
+    color: #DB1A1A;
+}
+
+.transaction {
+    display: flex;
+    margin-top: 1.3rem;
+    padding-left: 0.7rem;
+    padding-right: 0.7rem;
+}
+
+.transaction > div {
+    width: 50%;
+}
+
+.transaction-container {
+    text-align: left;
+}
+
+.transaction-container > h2 {
+    
+    font-weight: 550;
+    font-size: 1.2rem;
+}
+
+.transaction-list {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    font-size: 1rem;
+    background-color: white;
+    width: 99%;
+    padding: 0.7rem;
+    margin-bottom: 0.3rem;
+    border-radius: 0.5rem;
+    border-bottom: 0.01px solid #C5C1C150;
+
+    /* box-shadow: 0 1px 10px rgba(0, 0, 0, 0.2); */
+}
+
+.transaction-list:hover {
+    transform: translateX(2px);
+}
+
+/* Add that green/red rounded edge */
+
+.transaction-expense {
+    background-color: #DB1A1A;
+    border-radius: 0.6rem;
+}
+
+.transaction-list-container button {
+    font-weight: 800;
+    border-radius: 0.3rem;
+    margin-left: 0.5rem;
+    border: none;
+    padding: 0.5rem;
+    color: #DB1A1A;
+    background-color: white;
+    cursor: pointer;
+    transition: background-color 0.2s;
+
+    /* visibility: hidden; */
+}
+
+.transaction-list-container button:hover {
+    background-color: #DB1A1A15;
+}
+
+/* Make the button hidden and only visible if hovered over the div */
+
+
+/* Canva Color Pallete: https://www.canva.com/colors/color-palettes/little-princess/ */
