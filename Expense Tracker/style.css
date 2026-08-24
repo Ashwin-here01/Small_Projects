@@ -22,12 +22,12 @@ body {
     border-radius: 1.7rem;
     box-shadow: 2px 4px 10px rgba(0, 0, 0, 0.2);
     text-align: center;
+    width: 70vw;
 }
 
 .container > h2 {
     font-size: 1.8rem;
     font-weight: 600;
-    width: 60vw;
     margin-bottom: 1.4rem;
 }
 
@@ -99,10 +99,23 @@ body {
     text-align: left;
 }
 
+.transaction-list-div {
+    overflow-x: hidden;
+    overflow-y: scroll;
+    height: 50vh;
+}
+
+/* .transaction-list-div::-webkit-scrollbar-button {
+    width: 0;
+    height: 0;
+    display: none;
+} */
+/* Manipulate the scrollBar */
+
 .transaction-container > h2 {
-    
     font-weight: 550;
     font-size: 1.2rem;
+    margin-bottom: 1rem;
 }
 
 .transaction-list {
@@ -114,27 +127,28 @@ body {
     width: 99%;
     padding: 0.7rem;
     margin-bottom: 0.3rem;
-    border-radius: 0.5rem;
+    border-radius: 0.6rem;
     border-bottom: 0.01px solid #C5C1C150;
-
-    /* box-shadow: 0 1px 10px rgba(0, 0, 0, 0.2); */
 }
 
 .transaction-list:hover {
     transform: translateX(2px);
+    box-shadow: -2px 3px 10px rgba(0, 0, 0, 0.08);
 }
 
-/* Add that green/red rounded edge */
+.transaction-income {
+    border-right: 5px solid #249D8F;
+}
 
 .transaction-expense {
-    background-color: #DB1A1A;
-    border-radius: 0.6rem;
+    border-right: 5px solid #DB1A1A;
 }
 
-.transaction-list-container button {
+.transaction-list button {
     font-weight: 800;
+    font-size: 0.9rem;
     border-radius: 0.3rem;
-    margin-left: 0.5rem;
+    margin-left: 0.8rem;
     border: none;
     padding: 0.5rem;
     color: #DB1A1A;
@@ -142,11 +156,16 @@ body {
     cursor: pointer;
     transition: background-color 0.2s;
 
-    /* visibility: hidden; */
+    visibility: hidden;
+    transition: visibility 0.01s;
 }
 
-.transaction-list-container button:hover {
+.transaction-list button:hover {
     background-color: #DB1A1A15;
+}
+
+.transaction-list:hover button {
+    visibility: visible;
 }
 
 /* Make the button hidden and only visible if hovered over the div */
