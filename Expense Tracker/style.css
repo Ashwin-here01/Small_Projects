@@ -51,11 +51,12 @@ body {
     display: flex;
     justify-content: space-between;
     align-items: center;
+    gap: 1rem;
 }
 
 .in-ex-divs {
     background-color: white;
-    width: 49%;
+    width: 100%;
     border-radius: 0.5rem;
     padding: 1rem;
     transition: transform 0.2s;
@@ -101,8 +102,7 @@ body {
 }
 
 .transaction-list-div {
-    overflow-x: hidden;
-    overflow-y: scroll;
+    overflow-y: auto;
     max-height: 50vh;
 }
 
@@ -137,6 +137,15 @@ body {
     box-shadow: -2px 3px 10px rgba(0, 0, 0, 0.08);
 }
 
+.transaction-description {
+    max-width: 70%;
+    overflow-x: hidden;
+}
+
+.transaction-value {
+    min-width: 115px;
+}
+
 .transaction-income {
     border-right: 5px solid #249D8F;
 }
@@ -145,7 +154,7 @@ body {
     border-right: 5px solid #DB1A1A;
 }
 
-.transaction-list button {
+#list-dlt-btn {
     font-weight: 800;
     font-size: 0.9rem;
     border-radius: 0.3rem;
@@ -161,11 +170,11 @@ body {
     transition: visibility 0.01s;
 }
 
-.transaction-list button:hover {
+#list-dlt-btn:hover {
     background-color: #DB1A1A15;
 }
 
-.transaction-list:hover button {
+.transaction-list:hover #list-dlt-btn {
     visibility: visible;
 }
 
@@ -212,6 +221,21 @@ form input:focus {
     box-shadow: 0 0 5px rgba(0, 123, 255, 0.2);
 }
 
+.error {
+    font-size: 0.9rem;
+    color: #eb1313;
+    font-weight: 400;
+    margin-left: 1rem;
+}
+
+.hidden {
+    display: none;
+}
+
+.visible {
+    display: block;
+}
+
 .amount > p {
     font-size: 0.8rem;
     color: #000000aa;
@@ -238,11 +262,38 @@ form input:focus {
 }
 
 #add-transaction-btn:hover {
-    transform: translateY(-1.5px);
+    transform: translateY(-1px);
 }
 
 #add-transaction-btn:active {
-    transform: translateY(1.5px);
+    transform: translateY(1px);
+}
+
+
+
+/* Responsive design:- */
+
+@media(max-width : 1000px) {
+    .in-ex-container {
+        flex-direction: column;
+        gap: 0.6rem;
+    }
+    .in-ex-divs {
+        width: 50%;
+    }
+
+    .transaction {
+        flex-direction: column;
+    }
+    .transaction-container {
+        min-width: 100%;
+    }
+    .add-transaction {
+        min-width: 100%;
+    }
+    .transaction-list-div {
+        max-height: 40vh;
+    }
 }
 
 

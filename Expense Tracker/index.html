@@ -31,102 +31,18 @@
                 <div class="transaction-list-div">
                     <div class="transaction-list-container">
                         <div class="transaction-list transaction-income">
-                            <div class="transaction-income-description">Salary</div>
-                            <div class="transaction-income-value">
+                            <div class="transaction-description">Salary</div>
+                            <div class="transaction-value">
                                 <span>$2000.00</span>
-                                <button>X</button>
+                                <button id="list-dlt-btn">X</button>
                             </div>
                         </div>
                         
                         <div class="transaction-list transaction-expense">
-                            <div class="transaction-expense-description">Airpod</div>
-                            <div class="transaction-expense-value">
+                            <div class="transaction-description">Airpod</div>
+                            <div class="transaction-value">
                                 <span>-$100.00</span>
-                                <button>X</button>
-                            </div>
-                        </div>
-                        <div class="transaction-list transaction-expense">
-                            <div class="transaction-expense-description">Airpod</div>
-                            <div class="transaction-expense-value">
-                                <span>-$100.00</span>
-                                <button>X</button>
-                            </div>
-                        </div>
-                        <div class="transaction-list transaction-expense">
-                            <div class="transaction-expense-description">Airpod</div>
-                            <div class="transaction-expense-value">
-                                <span>-$100.00</span>
-                                <button>X</button>
-                            </div>
-                        </div>
-                        <div class="transaction-list transaction-expense">
-                            <div class="transaction-expense-description">Airpod</div>
-                            <div class="transaction-expense-value">
-                                <span>-$100.00</span>
-                                <button>X</button>
-                            </div>
-                        </div>
-                        <div class="transaction-list transaction-expense">
-                            <div class="transaction-expense-description">Airpod</div>
-                            <div class="transaction-expense-value">
-                                <span>-$100.00</span>
-                                <button>X</button>
-                            </div>
-                        </div>
-                        <div class="transaction-list transaction-expense">
-                            <div class="transaction-expense-description">Airpod</div>
-                            <div class="transaction-expense-value">
-                                <span>-$100.00</span>
-                                <button>X</button>
-                            </div>
-                        </div>
-                        <div class="transaction-list transaction-expense">
-                            <div class="transaction-expense-description">Airpod</div>
-                            <div class="transaction-expense-value">
-                                <span>-$100.00</span>
-                                <button>X</button>
-                            </div>
-                        </div>
-                        <div class="transaction-list transaction-expense">
-                            <div class="transaction-expense-description">Airpod</div>
-                            <div class="transaction-expense-value">
-                                <span>-$100.00</span>
-                                <button>X</button>
-                            </div>
-                        </div>
-                        <div class="transaction-list transaction-expense">
-                            <div class="transaction-expense-description">Airpod</div>
-                            <div class="transaction-expense-value">
-                                <span>-$100.00</span>
-                                <button>X</button>
-                            </div>
-                        </div>
-                        <div class="transaction-list transaction-expense">
-                            <div class="transaction-expense-description">Airpod</div>
-                            <div class="transaction-expense-value">
-                                <span>-$100.00</span>
-                                <button>X</button>
-                            </div>
-                        </div>
-                        <div class="transaction-list transaction-expense">
-                            <div class="transaction-expense-description">Airpod</div>
-                            <div class="transaction-expense-value">
-                                <span>-$100.00</span>
-                                <button>X</button>
-                            </div>
-                        </div>
-                        <div class="transaction-list transaction-expense">
-                            <div class="transaction-expense-description">Airpod</div>
-                            <div class="transaction-expense-value">
-                                <span>-$100.00</span>
-                                <button>X</button>
-                            </div>
-                        </div>
-                        <div class="transaction-list transaction-expense">
-                            <div class="transaction-expense-description">Airpod</div>
-                            <div class="transaction-expense-value">
-                                <span>-$100.00</span>
-                                <button>X</button>
+                                <button id="list-dlt-btn">X</button>
                             </div>
                         </div>
                     </div>
@@ -138,16 +54,18 @@
                 <form>
                     <div class="description">
                         <h4>Description</h4>
-                        <input type="text" placeholder="Enter description...">
+                        <input type="text" required placeholder="Enter description...">
+                        <span class="error">^ Please fill this field</span>
                     </div>
-
+                    
                     <div class="amount">
                         <h4>Amount</h4>
-                        <input type="number" placeholder="Enter amount...">
+                        <input type="number" required placeholder="Enter amount...">
+                        <span class="error">^ Please fill this field</span>
                         <p>Use negative (-) for expenses</p>
                     </div>
                     
-                    <button id="add-transaction-btn">Add Transaction</button>
+                    <button type="submit" id="add-transaction-btn">Add Transaction</button>
                 </form>
             </div>
         </div>
