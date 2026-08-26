@@ -11,7 +11,6 @@ body {
     display: flex;
     justify-content: center;
     align-items: center;
-    height: 100vh;
     background-color: #FADCDC;
     background: linear-gradient(300deg, #FADCDC, #F09292);
 }
@@ -23,6 +22,7 @@ body {
     box-shadow: 2px 4px 10px rgba(0, 0, 0, 0.2);
     text-align: center;
     width: 70vw;
+    margin: 2rem;
 }
 
 .container > h2 {
@@ -89,6 +89,7 @@ body {
     margin-top: 1.3rem;
     padding-left: 0.7rem;
     padding-right: 0.7rem;
+    gap: 1.6rem;
 }
 
 .transaction > div {
@@ -102,7 +103,7 @@ body {
 .transaction-list-div {
     overflow-x: hidden;
     overflow-y: scroll;
-    height: 50vh;
+    max-height: 50vh;
 }
 
 /* .transaction-list-div::-webkit-scrollbar-button {
@@ -168,7 +169,81 @@ body {
     visibility: visible;
 }
 
-/* Make the button hidden and only visible if hovered over the div */
+.add-transaction {
+    text-align: left;
+    background-color: #d3d3d330;
+    border-radius: 0.9rem;
+    padding: 1.4rem;
+    box-shadow: -1px 1px 10px rgba(0, 0, 0, 0.15);
+    max-height: 410px;
+    display: flex;
+    flex-direction: column;
+}
+
+.add-transaction > h2 {
+    font-weight: 450;
+    font-size: 1.2rem;
+    margin-bottom: 1rem;
+}
+
+form {
+    display: flex;
+    flex-direction: column;
+    height: 100%;
+}
+
+form h4 {
+    font-size: 0.9rem;
+    font-weight: 450;
+}
+
+form input {
+    border: 1px solid #80808060;
+    padding: 0.6rem;
+    border-radius: 0.3rem;
+    width: 100%;
+    margin: 0.5rem;
+    font-size: 1rem;
+}
+
+form input:focus {
+    border-color: #007bff40;
+    outline: none;
+    box-shadow: 0 0 5px rgba(0, 123, 255, 0.2);
+}
+
+.amount > p {
+    font-size: 0.8rem;
+    color: #000000aa;
+}
+
+.amount {
+    margin-bottom: 1rem;
+}
+
+#add-transaction-btn {
+    padding: 0.7rem;
+    font-size: 1rem;
+    font-weight: 520;
+    background-color: #b57e56;
+    color: #fff;
+    border: none;
+    border-radius: 7px;
+    width: 100%;
+    margin-left: 0.5rem;
+    margin-right: 0.5rem;
+    margin-top: auto;
+    cursor: pointer;
+    transition: transform 0.1s;
+}
+
+#add-transaction-btn:hover {
+    transform: translateY(-1.5px);
+}
+
+#add-transaction-btn:active {
+    transform: translateY(1.5px);
+}
 
 
 /* Canva Color Pallete: https://www.canva.com/colors/color-palettes/little-princess/ */
