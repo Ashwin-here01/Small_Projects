@@ -2,7 +2,6 @@ const remainingBalance = document.querySelector(".remaining-balance");
 const income = document.querySelector(".income");
 const expense = document.querySelector(".expense");
 const transactionListContainer = document.querySelector(".transaction-list-container");
-const listDltBtn = document.querySelectorAll("#list-dlt-btn");
 const description = document.querySelector(".description input");
 const amount = document.querySelector(".amount input");
 const addTBtn = document.querySelector("#add-transaction-btn");
@@ -25,7 +24,7 @@ function showError() {
     } else {
         hideError(0);
     }
-
+    
     if(amount.value.trim() === "") {
         errors[1].classList.remove("hidden");
         errors[1].classList.add("visible");
@@ -36,13 +35,13 @@ function showError() {
 
 function changeBalance(value) {
     let temp = remainingBalance.innerText;
-    if(temp[0] == "-") {
+    if(temp[0] === "-") {
         temp = -Number(temp.slice(2));
     } else {
         temp = Number(temp.slice(1));
     }
     temp += value;
-    temp = (Math.round(temp *100) / 100).toFixed(2);
+    temp = (Math.round(temp * 100) / 100).toFixed(2);
     if(Number(temp) < 0) {
         remainingBalance.innerText = "-$" + temp.slice(1);
     } else {
@@ -69,7 +68,7 @@ function changeInEx(value) {
 function addList(desc, value) {
     let transactionList = document.createElement("div");
     transactionList.classList.add("transaction-list");
-
+    
     let transactionDescription = document.createElement("div");
     transactionDescription.classList.add("transaction-description");
     transactionDescription.innerText = desc;
@@ -78,15 +77,15 @@ function addList(desc, value) {
     let transactionValue = document.createElement("div");
     transactionValue.classList.add("transaction-value");
     transactionList.append(transactionValue);
-
+    
     let valueSpan = document.createElement("span");
     transactionValue.append(valueSpan);
-
+    
     let dltBtn = document.createElement("button");
     dltBtn.id = "list-dlt-btn";
     dltBtn.innerText = "X";
     transactionValue.append(dltBtn);
-
+    
     if(value < 0) {
         transactionList.classList.add("transaction-expense");
         valueSpan.innerText = "-$" + (Math.round((-value) * 100) / 100).toFixed(2);
@@ -94,13 +93,21 @@ function addList(desc, value) {
         transactionList.classList.add("transaction-income");
         valueSpan.innerText = "$" + (Math.round(value * 100) / 100).toFixed(2);
     }
-
+    
     transactionListContainer.append(transactionList);
+}
+
+function changeInExDltList(value, inExDiv) {
+    let existingValue = inExDiv.innerText.slice(1);
+    console.log("Existing value:", existingValue);
+    value = existingValue - value;
+    console.log("Value", value);
+    inExDiv.innerText = "$" + (Math.round(value * 100) / 100).toFixed(2);
 }
 
 addTBtn.addEventListener("click", (evt) => {
     evt.preventDefault();
-
+    
     if(!form.checkValidity()) {
         showError();
         return;
@@ -108,15 +115,31 @@ addTBtn.addEventListener("click", (evt) => {
         hideError(0);
         hideError(1);
     }
-
+    
     changeBalance(Number(amount.value.trim()));
     
     changeInEx(Number(amount.value.trim()));
-
+    
     addList(description.value.trim(), Number(amount.value.trim()));
-
+    
     amount.value = "";
     description.value = "";
+    
+    let listDltBtn = document.querySelectorAll("#list-dlt-btn");
+    listDltBtn[listDltBtn.length - 1].addEventListener("click", (evt) => {
+        let value = listDltBtn[listDltBtn.length - 1].previousElementSibling.innerText.trim();
+        if(value[0] === "-") {
+            console.log(Number(value.slice(2)));
+            changeBalance(Number(value.slice(2)));
+            changeInExDltList(Number(value.slice(2)), expense);
+        } else {
+            console.log(-Number(value.slice(1)));
+            changeBalance(-Number(value.slice(1)));
+            changeInExDltList(Number(value.slice(1)), income);
+        }
+        
+        evt.target.closest(".transaction-list").remove();
+    });
 });
 
 
@@ -125,9 +148,7 @@ addTBtn.addEventListener("click", (evt) => {
 
 
 
-/*
-If the amount is in -ve it is expense and if it is in +ve it is an income... (accordingly set the right border green or red)
-And remove the class transaction-income and trasaction-expense from HTML
-*/
 
+
+// How to add animation for sliding the lists?
 // How to store the data on local system?
