@@ -144,6 +144,9 @@ body {
 
 .transaction-value {
     min-width: 115px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
 }
 
 .transaction-income {
@@ -158,7 +161,7 @@ body {
     font-weight: 800;
     font-size: 0.9rem;
     border-radius: 0.3rem;
-    margin-left: 0.8rem;
+    margin-right: 0.5rem;
     border: none;
     padding: 0.5rem;
     color: #DB1A1A;
@@ -280,6 +283,7 @@ form input:focus {
     }
     .in-ex-divs {
         width: 50%;
+        min-width: 10rem;
     }
 
     .transaction {

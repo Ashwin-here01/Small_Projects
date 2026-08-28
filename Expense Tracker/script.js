@@ -12,44 +12,6 @@ errors.forEach((error) => {
     error.classList.add("hidden");
 })
 
-// let value = 11.00;
-// let temp = remainingBalance.innerText;
-// console.log(temp);
-// if(temp[0] === "-") {
-//     temp = -Number(temp.slice(2));
-//     temp += value;
-//     temp = (Math.round(temp *100) / 100).toFixed(2);
-//     if(Number(temp) < 0) {
-//         remainingBalance.innerText = "-$" + temp.slice(1);
-//     } else {
-//         remainingBalance.innerText = "$" + temp;
-//     }
-//     console.log(temp);
-// }
-
-
-// temp = Number(temp.slice(1));
-// temp += value;
-// temp = (Math.round(temp * 100) / 100).toFixed(2);
-// if(Number(temp) < 0) {
-//     // remainingBalance.innerText = "-$" + temp.slice(1);
-// }
-
-function changeBalance(value) {
-    let temp = remainingBalance.innerText;
-    if(temp[0] == "-") {
-        temp = -Number(temp.slice(2));
-    } else {
-        temp = Number(temp.slice(1));
-    }
-    temp += value;
-    temp = (Math.round(temp *100) / 100).toFixed(2);
-    if(Number(temp) < 0) {
-        remainingBalance.innerText = "-$" + temp.slice(1);
-    } else {
-        remainingBalance.innerText = "$" + temp;
-    }
-}
 
 function hideError(i) {
     errors[i].classList.remove("visible");
@@ -72,6 +34,69 @@ function showError() {
     }
 }
 
+function changeBalance(value) {
+    let temp = remainingBalance.innerText;
+    if(temp[0] == "-") {
+        temp = -Number(temp.slice(2));
+    } else {
+        temp = Number(temp.slice(1));
+    }
+    temp += value;
+    temp = (Math.round(temp *100) / 100).toFixed(2);
+    if(Number(temp) < 0) {
+        remainingBalance.innerText = "-$" + temp.slice(1);
+    } else {
+        remainingBalance.innerText = "$" + temp;
+    }
+}
+
+function changeInEx(value) {
+    if(value < 0) {
+        let temp = expense.innerText;
+        temp = Number(temp.slice(1));
+        temp -= value;
+        temp = (Math.round(temp *100) / 100).toFixed(2);
+        expense.innerText = "$" + temp;
+    } else {
+        let temp = income.innerText;
+        temp = Number(temp.slice(1));
+        temp += value;
+        temp = (Math.round(temp *100) / 100).toFixed(2);
+        income.innerText = "$" + temp;
+    }
+}
+
+function addList(desc, value) {
+    let transactionList = document.createElement("div");
+    transactionList.classList.add("transaction-list");
+
+    let transactionDescription = document.createElement("div");
+    transactionDescription.classList.add("transaction-description");
+    transactionDescription.innerText = desc;
+    transactionList.append(transactionDescription);
+    
+    let transactionValue = document.createElement("div");
+    transactionValue.classList.add("transaction-value");
+    transactionList.append(transactionValue);
+
+    let valueSpan = document.createElement("span");
+    transactionValue.append(valueSpan);
+
+    let dltBtn = document.createElement("button");
+    dltBtn.id = "list-dlt-btn";
+    dltBtn.innerText = "X";
+    transactionValue.append(dltBtn);
+
+    if(value < 0) {
+        transactionList.classList.add("transaction-expense");
+        valueSpan.innerText = "-$" + (Math.round((-value) * 100) / 100).toFixed(2);
+    } else {
+        transactionList.classList.add("transaction-income");
+        valueSpan.innerText = "$" + (Math.round(value * 100) / 100).toFixed(2);
+    }
+
+    transactionListContainer.append(transactionList);
+}
 
 addTBtn.addEventListener("click", (evt) => {
     evt.preventDefault();
@@ -85,11 +110,13 @@ addTBtn.addEventListener("click", (evt) => {
     }
 
     changeBalance(Number(amount.value.trim()));
+    
+    changeInEx(Number(amount.value.trim()));
+
+    addList(description.value.trim(), Number(amount.value.trim()));
 
     amount.value = "";
     description.value = "";
-
-    
 });
 
 
