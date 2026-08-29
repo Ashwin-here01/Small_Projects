@@ -13,6 +13,7 @@ body {
     align-items: center;
     background-color: #FADCDC;
     background: linear-gradient(300deg, #FADCDC, #F09292);
+    min-height: 100vh;
 }
 
 .container {
@@ -101,17 +102,28 @@ body {
     text-align: left;
 }
 
-.transaction-list-div {
+.transaction-list-container {
     overflow-y: auto;
     max-height: 50vh;
 }
 
-/* .transaction-list-div::-webkit-scrollbar-button {
-    width: 0;
-    height: 0;
-    display: none;
-} */
-/* Manipulate the scrollBar */
+.transaction-list-container::-webkit-scrollbar {
+    width: 8px;
+}
+
+.transaction-list-container::-webkit-scrollbar-track {
+    background-color: #f1f1f1;
+    border-radius: 4px;
+}
+
+.transaction-list-container::-webkit-scrollbar-thumb {
+    background-color: #cbd5e0;
+    border-radius: 4px;
+}
+
+.transaction-list-container::-webkit-scrollbar-thumb:hover {
+    background-color: #a0aec0;
+}
 
 .transaction-container > h2 {
     font-weight: 550;
